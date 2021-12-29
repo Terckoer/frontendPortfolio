@@ -2,7 +2,7 @@
 let scale = 0.4;
 
 const $backgroundAnimated = document.querySelectorAll('.animations-container div');
-const $header = document.querySelector('.header');
+const $header = document.getElementById('id-header');
 const $next = document.getElementById('id-next');
 const $previous = document.getElementById('id-previous');
 const $slider = document.getElementById('id-slider');
@@ -12,7 +12,7 @@ const $skills = document.getElementById('id-skills');
 const $contact = document.getElementById('id-contact');
 const $closeMenu = document.getElementById('id-close-menu');
 const $openMenu = document.getElementById('id-open-menu');
-
+const $layer =document.getElementById('id-close-layer');
 
 const generarHex = () =>{
     let arr = [1,2,3,4,5,6,7,8,9,0,'a','b','c','d','e','f'];
@@ -106,6 +106,8 @@ setTimeout(function (){
 const removeMenu = () =>{
     const $menu = document.getElementById('id-hidden-menu');
     const $layer = document.getElementById('id-menu-layer');
+    const $body = document.getElementById('id-body');
+    $body.classList.remove('menu-is-visible');
     $menu.classList.remove('show-menu');
     $layer.classList.remove('show-menu');
 }
@@ -114,6 +116,8 @@ const removeMenu = () =>{
 const addMenu = () =>{
     const $menu = document.getElementById('id-hidden-menu');
     const $layer = document.getElementById('id-menu-layer');
+    const $body = document.getElementById('id-body');
+    $body.classList.add('menu-is-visible');
     $menu.classList.add('show-menu');
     $layer.classList.add('show-menu');
 }
@@ -122,7 +126,7 @@ $next.addEventListener('click', () => next());
 $previous.addEventListener('click', () => previous());
 $closeMenu.addEventListener('click', ()=> removeMenu());
 $openMenu.addEventListener('click', ()=> addMenu());
-
+$layer.addEventListener('click', ()=>removeMenu());
 
 //INTERSECTION OBSERVER FUNCTIONS
 
@@ -178,9 +182,9 @@ const showProject = (entries, observer) =>{
         $aboutContainer.style.opacity = '0';
         $aboutContainer.style.transition = `all 0.5s linear`;
         $aboutContainer.style.transform = `scale(0.7)`;
-        $next.style.right = `-10vw`; 
+        $next.style.right = `-100px`; 
         $next.style.transition = `all 0.5s ease`; 
-        $previous.style.left = `-10vw`; 
+        $previous.style.left = `-100px`; 
         $previous.style.transition = `all 0.5s ease`; 
     }
 }
